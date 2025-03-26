@@ -1,25 +1,36 @@
-import { NavbarCollapse, NavbarToggle } from 'react-bootstrap';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import {Link} from 'react-router-dom'
-import { useSelector } from 'react-redux';
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-function NavScrollExample() {
-    const cartProducts=useSelector(state=>state.cart);
+const NavBar = () => {
+  const cartProducts = useSelector((state) => state.cart);
+
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" bg="light">
       <Container fluid>
-        <Navbar.Brand href="#">Redux-toolkit</Navbar.Brand>
-            <Nav.Link to='/' as={Link}>Product</Nav.Link>
+        <Navbar.Brand href="#">Redux Toolkit</Navbar.Brand>
 
-        <NavbarToggle />
-        <NavbarCollapse className='justify-content-end'>
-            <Nav.Link to='/cart' as={Link}>My bag {cartProducts.length}</Nav.Link>
-        </NavbarCollapse>
+        {/* Toggle button for mobile view */}
+        <Navbar.Toggle aria-controls="navbar-nav" />
+
+        <Navbar.Collapse id="navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link as={Link} to="/">
+              Products
+            </Nav.Link>
+          </Nav>
+
+          <Nav className="ms-auto">
+            <Nav.Link as={Link} to="/cart">
+              My Bag ({cartProducts.length})
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
       </Container>
     </Navbar>
   );
-}
+};
 
-export default NavScrollExample;
+export default NavBar;

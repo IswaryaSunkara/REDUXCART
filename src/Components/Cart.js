@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Card,Button } from "react-bootstrap";
 const Cart=()=>{
-    const productCard=useSelector(state=>state.Cart);
+    const productCard=useSelector(state=>state.cart);
         const cards=productCard.map(product => (
             <div className="col-md-12" style={{marginBottom:"10px"}}> 
                 <Card key={product.id} className='h-100'>
