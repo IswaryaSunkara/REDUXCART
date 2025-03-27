@@ -1,26 +1,26 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    data:[],
-}; 
+  data: [],
+};
 
 const productSlice = createSlice({
-    name: 'products',
-    initialState,
-    reducers: {
-        fetchProducts(state,action){
-            state.data=action.payload;
-        }
-    }
+  name: "products",
+  initialState,
+  reducers: {
+    fetchProducts(state, action) {
+      state.data = action.payload;
+    },
+  },
 });
 
 export const { fetchProducts } = productSlice.actions;
 export default productSlice.reducer;
 
-export function getProducts(){
-    return async function getProductsThunk(dispatch,getState){
-        const data= await fetch("https://fakestoreapi.com/Products");
-        const result = await data.json();
-        dispatch(fetchProducts(result));
-    }
+export function getProducts() {
+  return async function getProductsThunk(dispatch, getState) {
+    const data = await fetch("https://fakestoreapi.com/Products");
+    const result = await data.json();
+    dispatch(fetchProducts(result));
+  };
 }
