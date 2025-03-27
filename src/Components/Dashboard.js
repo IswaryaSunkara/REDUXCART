@@ -4,7 +4,6 @@ const Dashboard=()=>{
     return(
         <>
           <Product />
-          <h1>Hlo</h1>
         </>
     );
 }
